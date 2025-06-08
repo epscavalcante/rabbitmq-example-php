@@ -1,8 +1,23 @@
 <?php
 
-use Src\Example;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
 
 test('example', function () {
-    $example = new Example;
-    expect($example->sayHello())->toBe('Hello');
+    $connection = new AMQPStreamConnection(
+        host: 'rabbitmq',
+        user: 'root',
+        password: 'root',
+        port: 5672,
+        vhost: '/'
+    );
+
+    $channel = $connection->channel();
+
+    echo "Canal criado com sucesso";
+    sleep(50);
+    echo "Canal encerrado com sucesso";
+
+    $channel->close();
+
+    $connection->close();
 });
