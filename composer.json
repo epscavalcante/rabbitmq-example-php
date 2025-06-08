@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Src\\": "src"
+            "Src\\": "src/"
         }
     },
     "autoload-dev": {
@@ -19,8 +19,12 @@
             "Tests\\": "tests/"
         }
     },
+    "require": {
+        "php-amqplib/php-amqplib": "^3.7"
+    },
     "require-dev": {
-        "pestphp/pest": "^3.8"
+        "pestphp/pest": "^3.8",
+        "symfony/var-dumper": "^7.2"
     },
     "config": {
         "allow-plugins": {
@@ -31,6 +35,7 @@
     "prefer-stable": true,
     "scripts": {
         "test": "./vendor/bin/pest",
-        "test:coverage": "./vendor/bin/pest --coverage"
+        "test:coverage": "./vendor/bin/pest --coverage",
+        "rabbitmq:connect": "php ./src/Connection1/Connection.php"
     }
 }

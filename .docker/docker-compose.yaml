@@ -5,3 +5,15 @@ services:
       dockerfile: php.Dockerfile
     volumes:
       - ../:/var/www
+
+  rabbitmq:
+    build:
+      context: .
+      dockerfile: rabbitmq.Dockerfile
+    ports:
+      - 5672:5672 # backend
+      - 15672:15672 #frontend
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=root
+
